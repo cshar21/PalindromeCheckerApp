@@ -98,5 +98,37 @@ public class PalindromeCheckerApp {
         else {
             System.out.println(wordUC6 + " is NOT a Palindrome (UC6)");
         }
+        // UC7: Deque-Based Optimized Palindrome Checker
+
+        String wordUC7 = "refer";
+
+        // Create Deque
+        Deque<Character> deque = new ArrayDeque<>();
+
+        // Insert characters into deque
+        for(int i = 0; i < wordUC7.length(); i++) {
+            deque.addLast(wordUC7.charAt(i));
+        }
+
+        // Compare front and rear
+        boolean isPalindromeUC7 = true;
+
+        while(deque.size() > 1) {
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
+
+            if(front != rear) {
+                isPalindromeUC7 = false;
+                break;
+            }
+        }
+
+        // Display result
+        if(isPalindromeUC7) {
+            System.out.println(wordUC7 + " is a Palindrome (UC7)");
+        }
+        else {
+            System.out.println(wordUC7 + " is NOT a Palindrome (UC7)");
+        }
     }
 }
