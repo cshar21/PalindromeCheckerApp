@@ -4,8 +4,25 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.ArrayDeque;
 public class PalindromeCheckerApp {
+    // Recursive function to check palindrome
+    public static boolean isPalindromeRecursive(String str, int start, int end) {
+
+        // Base condition
+        if(start >= end) {
+            return true;
+        }
+
+        // If characters do not match
+        if(str.charAt(start) != str.charAt(end)) {
+            return false;
+        }
+
+        // Recursive call
+        return isPalindromeRecursive(str, start + 1, end - 1);
+    }
 
     public static void main(String[] args) {
+
 
         System.out.println("=================================");
         System.out.println(" Welcome to Palindrome Checker ");
@@ -162,6 +179,48 @@ public class PalindromeCheckerApp {
         }
         else {
             System.out.println(wordUC8 + " is NOT a Palindrome (UC8)");
+        }
+        // UC9: Recursive Palindrome Checker
+
+        String wordUC9 = "madam";
+
+        boolean isPalindromeUC9 = isPalindromeRecursive(wordUC9, 0, wordUC9.length() - 1);
+
+        if(isPalindromeUC9) {
+            System.out.println(wordUC9 + " is a Palindrome (UC9)");
+        }
+        else {
+            System.out.println(wordUC9 + " is NOT a Palindrome (UC9)");
+        }
+        // UC10: Case-Insensitive & Space-Ignored Palindrome
+
+        String wordUC10 = "A man a plan a canal Panama";
+
+// Normalize the string
+        String normalized = wordUC10.replaceAll("\\s+", "").toLowerCase();
+
+// Apply palindrome check
+        int startUC10 = 0;
+        int endUC10 = normalized.length() - 1;
+        boolean isPalindromeUC10 = true;
+
+        while(startUC10 < endUC10) {
+
+            if(normalized.charAt(startUC10) != normalized.charAt(endUC10)) {
+                isPalindromeUC10 = false;
+                break;
+            }
+
+            startUC10++;
+            endUC10--;
+        }
+
+// Display result
+        if(isPalindromeUC10) {
+            System.out.println(wordUC10 + " is a Palindrome (UC10)");
+        }
+        else {
+            System.out.println(wordUC10 + " is NOT a Palindrome (UC10)");
         }
     }
 }
