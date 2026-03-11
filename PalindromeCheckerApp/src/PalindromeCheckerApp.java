@@ -1,6 +1,8 @@
 import java.util.Stack;
 import java.util.Queue;
+import java.util.Deque;
 import java.util.LinkedList;
+import java.util.ArrayDeque;
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
@@ -129,6 +131,37 @@ public class PalindromeCheckerApp {
         }
         else {
             System.out.println(wordUC7 + " is NOT a Palindrome (UC7)");
+        }
+        // UC8: Linked List Based Palindrome Checker
+
+        String wordUC8 = "level";
+
+        // Convert string to LinkedList
+        LinkedList<Character> list = new LinkedList<>();
+
+        for(int i = 0; i < wordUC8.length(); i++) {
+            list.add(wordUC8.charAt(i));
+        }
+
+        // Compare front and rear using LinkedList
+        boolean isPalindromeUC8 = true;
+
+        while(list.size() > 1) {
+            char first = list.removeFirst();
+            char last = list.removeLast();
+
+            if(first != last) {
+                isPalindromeUC8 = false;
+                break;
+            }
+        }
+
+        // Display result
+        if(isPalindromeUC8) {
+            System.out.println(wordUC8 + " is a Palindrome (UC8)");
+        }
+        else {
+            System.out.println(wordUC8 + " is NOT a Palindrome (UC8)");
         }
     }
 }
